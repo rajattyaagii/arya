@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Celebration Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgb(0, 249, 236), rgb(71, 150, 229));
+        }
+        #gif-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #kitty-gif, #selection-gif, #reality-gif {
+            max-width: 100%;
+            display: none; /* Hidden by default, shown by script */
+        }
+    </style>
+</head>
+<body>
+    <div id="gif-container">
+        <img id="kitty-gif" src="kitty.gif" alt="Kitty Celebration" />
+        <img id="selection-gif" src="selection.gif" alt="Selection Celebration" />
+        <img id="reality-gif" src="reality.gif" alt="Reality" />
+    </div>
+
+    <script>
+        // Show the kitty gif on load
+        window.onload = function() {
+            document.getElementById('kitty-gif').style.display = 'block';
+
+            // After 1 second, hide the kitty gif and show the selection gif
+            setTimeout(function() {
+                document.getElementById('kitty-gif').style.display = 'none';
+                document.getElementById('selection-gif').style.display = 'block';
+            }, 3000);
+             // 1000 milliseconds = 1 second
+             setTimeout(function() {
+                document.getElementById('selection-gif').style.display = 'none';
+                document.getElementById('reality-gif').style.display = 'block';
+            }, 20000);
+        };
+    </script>
+</body>
+</html>

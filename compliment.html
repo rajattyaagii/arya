@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compliment Generator</title>
+    <link rel="stylesheet" href="complimentStyle.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="gif_container">
+            <img
+              src="https://i.postimg.cc/pdNqPxx1/milk-and-mocha-cute.gif"
+              alt="Cute animated illustration"
+            />
+          </div>
+        <div id="compliment-container">
+            <button id="generate-compliment">Tap this to get some ancient knowledge</button>
+            <p id="compliment-display"></p>
+            <button id="celebrate-button" style="display:none;">Let's move to different dimension!</button>
+        </div>
+    </div>
+    
+    <!-- Include your JavaScript file at the end of the body -->
+    <script>
+        let currentComplimentIndex = 0;
+        const compliments = [
+                "You're awesome!, kya? you don't say? xD",
+                "You are a gamer like me but I'm better ;)",
+                "You're a perfect passenger princess <3",
+                "You made my hear skip a beat everytime you smile :D ",
+                "Yada Yada Yada, If I'll really start then this could take whole day :P ",
+                "Okay now 1 last xD"
+            ];
+            document.getElementById('generate-compliment').addEventListener('click', function() {
+    if (currentComplimentIndex < compliments.length) {
+        document.getElementById('compliment-display').innerText = compliments[currentComplimentIndex];
+        currentComplimentIndex++;
+
+        if (currentComplimentIndex === compliments.length) {
+            this.innerText = "one final tap ;)";
+        }
+    } else {
+        // Clear the compliment text and hide the generate button
+        document.getElementById('compliment-display').innerText = '';
+        this.style.display = 'none';
+
+        // Show the celebrate button
+        document.getElementById('celebrate-button').style.display = 'block';
+    }
+});
+
+        document.getElementById('generate-compliment').addEventListener('click', function() {
+            if (currentComplimentIndex < compliments.length) {
+                document.getElementById('compliment-display').innerText = compliments[currentComplimentIndex];
+                currentComplimentIndex++;
+                
+                // Change button text on the last compliment
+                if (currentComplimentIndex === compliments.length) {
+                    this.innerText = "one final tap ;)";
+                }
+            } else {
+                // After the last compliment, show the celebrate button
+                this.style.display = 'none'; // Hide the generate button
+                document.getElementById('celebrate-button').style.display = 'block'; // Show the celebrate button
+            }
+        });
+
+        // Confetti Effect
+        document.getElementById('celebrate-button').addEventListener('click', function() {
+            for (let i = 0; i < 100; i++) {
+                createConfetti();
+            }
+            // Navigate to the second page after a delay
+            setTimeout(function() {
+                window.location.href = 'URL-of-second-page.html'; // Replace with your desired URL
+            }, 3000); // Adjust time as needed
+        });
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            document.body.appendChild(confetti);
+
+            // Randomize confetti characteristics
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = Math.random() * 2 + 3 + 's'; // Duration between 3 to 5 seconds
+            confetti.style.opacity = Math.random();
+            confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+
+            // Remove confetti after its animation ends
+            setTimeout(function() {
+                confetti.remove();
+            }, 5000); // Adjust according to the longest possible animation duration
+        }
+    </script>
+</body>
+</html>
